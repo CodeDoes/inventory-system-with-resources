@@ -12,7 +12,7 @@ var handheld:HandHeld
 	set(v):
 		if inventory:
 			equip_index = v % inventory.size()
-		equip_index_changed.emit(v)
+		equip_index_changed.emit(equip_index)
 		update_handheld()
 		
 @export var inventory:Array[InvItem] = []:
@@ -23,7 +23,7 @@ var handheld:HandHeld
 		
 var equiped:InvItem:
 	get():
-		if equip_index > inventory.size():
+		if equip_index >= inventory.size():
 			return null
 		return inventory[equip_index]
 var move_speed = 10.0
@@ -36,6 +36,8 @@ func update_handheld():
 		handheld.queue_free()
 	if not is_inside_tree():
 		await tree_entered
+	if not equiped.handheld_tscn:
+		return
 	handheld = load(equiped.handheld_tscn).instantiate()
 	%Camera3D.add_child(handheld,true,Node.INTERNAL_MODE_FRONT)
 	

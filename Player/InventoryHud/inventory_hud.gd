@@ -17,12 +17,12 @@ func inventory_changed():
 		hudItem.invItem = item
 	equip_index_changed(player.equip_index)
 
-func equip_index_changed(index:int):
-	if index>=get_child_count():
+func equip_index_changed(equip_index:int):
+	if equip_index>=get_child_count():
 		return
 	for c in get_children():
 		(c as InvHudItem).selected = false
-	(get_child(player.equip_index) as InvHudItem).selected = true
+	(get_child(equip_index) as InvHudItem).selected = true
 			
 			
 	
