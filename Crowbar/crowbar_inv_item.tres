@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cksy5xawmo1e"]
+
+[ext_resource type="Script" uid="uid://2h72rjh35ho3" path="res://InvItem/inv_item.gd" id="2_i1pwx"]
+
+[resource]
+script = ExtResource("2_i1pwx")
+inv_name = "Crowbar"
+handheld_tscn = "uid://bvqqpdll1pp27"
+world_tscn = "uid://dcld2ntmls3vt"
+metadata/_custom_type_script = "uid://2h72rjh35ho3"

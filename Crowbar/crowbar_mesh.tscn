@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://fgy7w22665f2"]
+
+[node name="CrowbarMesh" type="CSGCombiner3D" unique_id=1642686481]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=163805140]
+size = Vector3(0.07714844, 0.09350586, 1.1650391)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1703310440]
+transform = Transform3D(1, 0, 0, 0, 0.63446075, -0.7729551, 0, 0.7729551, 0.63446075, -0.020751953, 0.076043695, -0.5499674)
+size = Vector3(0.03564453, 0.09350586, 0.1899414)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=376842070]
+transform = Transform3D(1, 0, 0, 0, 0.63446075, -0.7729551, 0, 0.7729551, 0.63446075, 0.03642705, 0.076043695, -0.5499674)
+size = Vector3(0.03564453, 0.09350586, 0.1899414)

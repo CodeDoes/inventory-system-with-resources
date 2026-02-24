@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://c3ukwy0o0jcee"]
+
+[ext_resource type="Script" uid="uid://c6au4naai856m" path="res://Player/player.gd" id="1_4flbx"]
+[ext_resource type="Resource" uid="uid://cksy5xawmo1e" path="res://Crowbar/crowbar_inv_item.tres" id="2_4ntmi"]
+[ext_resource type="Resource" uid="uid://1jbk8k4olimg" path="res://Cellphone/cellphone_inv_item.tres" id="2_gwnis"]
+[ext_resource type="Script" uid="uid://2h72rjh35ho3" path="res://InvItem/inv_item.gd" id="3_k53q1"]
+[ext_resource type="PackedScene" uid="uid://b7shtm1mp2o6l" path="res://Player/InventoryHud/inventory_hud.tscn" id="5_k53q1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+radius = 0.25
+height = 1.7
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i3pqv"]
+radius = 0.25
+height = 1.7
+
+[node name="Player" type="CharacterBody3D" unique_id=13774056]
+script = ExtResource("1_4flbx")
+inventory = Array[ExtResource("3_k53q1")]([ExtResource("2_gwnis"), ExtResource("2_4ntmi")])
+
+[node name="CameraOrigin" type="Node3D" parent="." unique_id=186298321]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrigin" unique_id=1883701521]
+unique_name_in_owner = true
+
+[node name="PickupRay" type="RayCast3D" parent="CameraOrigin/Camera3D" unique_id=10026190]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+debug_shape_custom_color = Color(1, 1, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1155282866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=666768720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+mesh = SubResource("CapsuleMesh_i3pqv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1241787856]
+
+[node name="Control" type="ColorRect" parent="CanvasLayer" unique_id=870138845]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -20.0
+offset_right = 2.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="ColorRect" parent="CanvasLayer" unique_id=722366207]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryHud" parent="CanvasLayer" unique_id=651755110 node_paths=PackedStringArray("player") instance=ExtResource("5_k53q1")]
+player = NodePath("../..")

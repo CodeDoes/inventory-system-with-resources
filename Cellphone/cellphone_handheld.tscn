@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://po0w48hvw1wk"]
+
+[ext_resource type="Script" uid="uid://cxkhultnwc6jv" path="res://InvItem/handheld.gd" id="1_h7r5n"]
+[ext_resource type="Resource" uid="uid://1jbk8k4olimg" path="res://Cellphone/cellphone_inv_item.tres" id="2_41v5s"]
+[ext_resource type="PackedScene" uid="uid://pqnegaa1kjl0" path="res://Cellphone/cellphone_mesh.tscn" id="2_tw4c7"]
+
+[sub_resource type="Animation" id="Animation_tw4c7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellphoneMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.3315628, -0.27859417, -0.4773618)]
+}
+
+[sub_resource type="Animation" id="Animation_41v5s"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CellphoneMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.3315628, -0.81327593, -0.4773618), Vector3(0.3315628, -0.27859417, -0.4773618)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5b38j"]
+_data = {
+&"RESET": SubResource("Animation_tw4c7"),
+&"start": SubResource("Animation_41v5s")
+}
+
+[node name="CellphoneHandheld" type="Camera3D" unique_id=1390690000]
+script = ExtResource("1_h7r5n")
+invItem = ExtResource("2_41v5s")
+
+[node name="CellphoneMesh" parent="." unique_id=538509749 instance=ExtResource("2_tw4c7")]
+transform = Transform3D(0.5042697, -0.8215825, -0.26592153, -0.15602301, 0.21619093, -0.96380436, 0.8493345, 0.5275072, -0.019167185, 0.3315628, -0.27859417, -0.4773618)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=21602176]
+libraries/ = SubResource("AnimationLibrary_5b38j")
+autoplay = &"start"

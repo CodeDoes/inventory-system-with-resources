@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cji7tor0y87c3"]
+
+[ext_resource type="Script" uid="uid://cv5c6l67ptfaa" path="res://InvItem/world_object.gd" id="1_x4086"]
+[ext_resource type="Script" uid="uid://2h72rjh35ho3" path="res://InvItem/inv_item.gd" id="2_x4086"]
+[ext_resource type="PackedScene" uid="uid://pqnegaa1kjl0" path="res://Cellphone/cellphone_mesh.tscn" id="3_6pcc2"]
+
+[sub_resource type="Resource" id="Resource_s2gyv"]
+script = ExtResource("2_x4086")
+inv_name = "Smartphone"
+handheld_tscn = "uid://po0w48hvw1wk"
+world_tscn = "uid://cxwtksdehao6c"
+metadata/_custom_type_script = "uid://2h72rjh35ho3"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w8vwo"]
+points = PackedVector3Array(0.076293945, 0.056145363, 0.15637204, 0.076293945, -0.056152344, 0.15637204, 0.076293945, 0.056145363, -0.15637603, 0.065913305, 0.07824707, -0.007820696, -0.076293945, 0.056145363, 0.15637204, -0.076293945, -0.056152344, 0.15637204, 0.076293945, -0.056152344, -0.15637603, 0.065913305, 0.07824707, -0.1415938, 0.064643726, 0.042634383, -0.25964805, -0.06592824, 0.07824707, -0.007820696, -0.076293945, 0.056145363, -0.15637603, -0.076293945, -0.056152344, -0.15637603, 0.064643726, 0.010415882, -0.25964805, -0.06592824, 0.07824707, -0.1415938, 0.019954719, 0.042634383, -0.25964805, 0.019954719, 0.010415882, -0.25964805)
+
+[node name="CellphoneWorld" type="RigidBody3D" unique_id=1382839284]
+script = ExtResource("1_x4086")
+invItem = SubResource("Resource_s2gyv")
+
+[node name="CellphoneMesh" parent="." unique_id=538509749 instance=ExtResource("3_6pcc2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2001138268]
+shape = SubResource("ConvexPolygonShape3D_w8vwo")

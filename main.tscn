@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bf3m4ljd14qfn"]
+
+[ext_resource type="PackedScene" uid="uid://c3ukwy0o0jcee" path="res://Player/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://y1ilh5vro7ug" path="res://Crowbar/badbar_world.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cji7tor0y87c3" path="res://Cellphone/smartphone_world.tscn" id="3_1bvp3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+
+[node name="Node3D" type="Node3D" unique_id=1476783684]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1466528905]
+material_override = SubResource("StandardMaterial3D_lquwl")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=368711207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.25, 1.5)
+size = Vector3(4, 0.5, 4)
+
+[node name="Player" parent="." unique_id=13774056 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9659258, -1.0554188, -4.7683716e-07, -1.8046647)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=683550513]
+environment = SubResource("Environment_h2yge")
+
+[node name="CellphoneWorld2" parent="." unique_id=1382839284 instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4280307, 0.71080995, 1.6961854)
+
+[node name="CrowbarWorldObject" parent="." unique_id=1634394640 instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.196524, 0)
